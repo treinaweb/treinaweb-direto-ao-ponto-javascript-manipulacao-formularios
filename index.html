@@ -1,17 +1,44 @@
 <body>
     <form name="myForm">
-        <input type="text" name="name">
+        <label for="email">
+            Email:
+            <br>
+            <input type="email" name="email">
+        </label>
 
-        <input type="submit" onclick="myFunction()" value="click">
+        <br>
+        <label for="password">
+            Senha:
+            <br>
+            <input type="password" name="password"><br>
+        </label>
+        <br>
+        <input type="submit" value="Entrar">
     </form>
 
     <script>
-        const myForm = document.forms.myForm;
-        const name = myForm.name;
+        const myForm = document.forms.myForm
+        const email = myForm.email;
+        const password = myForm.password;
 
-        function myFunction() {
+        myForm.addEventListener("submit", function (event) {
 
-            name.setCustomValidity("mensagem de erro");
-        }
+            if (email.value === "") {
+                event.preventDefault();
+                email.setCustomValidity("Email é obrigatório");
+            } else if (!email.value.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/)) {
+                event.preventDefault();
+                email.setCustomValidity(`O email ${email.value} não é válido`)
+            }
+
+
+            if (password.value === "") {
+                event.preventDefault();
+                password.setCustomValidity("A senha é obrigatória");
+            } else if (password.value.length < 3) {
+                event.preventDefault();
+                password.setCustomValidity("A senha é menor do que três caracteres");
+            }
+        });
     </script>
 </body>
