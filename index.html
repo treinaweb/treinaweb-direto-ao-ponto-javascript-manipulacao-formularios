@@ -1,33 +1,17 @@
 <body>
     <form name="myForm">
-        <label for="email">
-            Email:<br>
-            <input type="email" name="email" required>
-        </label>
-        <br>
+        <input type="text" name="name">
 
-        <label>
-            Senha:
-            <br>
-            <input type="password" name="password" minlength="3" required>
-        </label>
-        <br>
-
-        <input type="submit" value="Entrar" onclick="enviarForm()">
+        <input type="submit" onclick="myFunction()" value="click">
     </form>
 
     <script>
         const myForm = document.forms.myForm;
-        const email = myForm.email;
-        const password = myForm.password;
+        const name = myForm.name;
 
-        myForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-        })
+        function myFunction() {
 
-        function enviarForm() {
-            console.log(email.validity);
-            console.log(password.validity);
+            name.setCustomValidity("mensagem de erro");
         }
     </script>
 </body>
