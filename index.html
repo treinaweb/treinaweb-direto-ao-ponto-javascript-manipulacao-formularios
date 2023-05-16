@@ -1,15 +1,21 @@
 <body>
-    <!-- <input type="checkbox" id="check-1">
-    <input type="checkbox" id="check-2">
-    <input type="checkbox" id="check-3"> -->
+    <select id="my-select">
+        <option value="op-1" id="a">1</option>
+        <option value="op-2" id="b" selected>2</option>
+        <option value="op-3" id="c">3</option>
+    </select>
 
-    <input type="radio" name="my-radio" id="radio-1">
-    <input type="radio" name="my-radio" id="radio-2">
-    <input type="radio" name="my-radio" id="radio-3">
 
     <script>
-        const myRadio = document.querySelector("#radio-3");
-        myRadio.checked = true;
+        const mySelect = document.querySelector("#my-select");
+        console.log(mySelect);
+        console.log(mySelect.selectedIndex);
+        console.log(mySelect.value);
+
+        const myOption = document.querySelector("#c");
+        console.log(myOption.selected)
+        myOption.selected = true;
+        console.log(myOption.selected)
 
     </script>
 </body>
