@@ -1,21 +1,23 @@
 <body>
-    <select id="my-select">
-        <option value="op-1" id="a">1</option>
-        <option value="op-2" id="b" selected>2</option>
-        <option value="op-3" id="c">3</option>
-    </select>
+    <form>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
 
+        <label for="password">Senha:</label><br>
+        <input type="password" id="password" name="password" required><br>
+
+        <input type="submit" value="Enviar">
+    </form>
 
     <script>
-        const mySelect = document.querySelector("#my-select");
-        console.log(mySelect);
-        console.log(mySelect.selectedIndex);
-        console.log(mySelect.value);
+        const myForm = documector("form");
+        console.log(myForm);
 
-        const myOption = document.querySelector("#c");
-        console.log(myOption.selected)
-        myOption.selected = true;
-        console.log(myOption.selected)
-
+        myForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const email = document.querySelector("#email");
+            console.log(event);
+            console.log(email.value);
+        });
     </script>
 </body>
