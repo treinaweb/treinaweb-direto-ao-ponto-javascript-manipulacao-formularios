@@ -1,31 +1,33 @@
 <body>
     <form name="myForm">
-        <label>
-            Nome:
-            <br>
-            <input type="text" name="name">
+        <label for="email">
+            Email:<br>
+            <input type="email" name="email" required>
         </label>
-
         <br>
 
         <label>
-            Idade:
+            Senha:
             <br>
-            <input type="number" name="idade"><br>
+            <input type="password" name="password" minlength="3" required>
         </label>
+        <br>
 
-        <p>Sexo:</p>
-        <input type="radio" id="masculino" name="genero" value="masculino">
-        <label for="masculino">Masculino</label><br>
-        <input type="radio" id="feminino" name="genero" value="feminino">
-        <label for="feminino">Feminino</label><br>
-        <br />
-        <input type="submit" value="Submit">
+        <input type="submit" value="Entrar" onclick="enviarForm()">
     </form>
 
     <script>
         const myForm = document.forms.myForm;
-        const myInputName = myForm.name;
-        console.log(myForm.idade);
+        const email = myForm.email;
+        const password = myForm.password;
+
+        myForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+        })
+
+        function enviarForm() {
+            console.log(email.validity);
+            console.log(password.validity);
+        }
     </script>
 </body>
