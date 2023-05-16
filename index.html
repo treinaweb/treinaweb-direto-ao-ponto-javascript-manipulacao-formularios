@@ -1,0 +1,20 @@
+<body>
+    <input type="text" value="exemplo" disabled>
+    <button onclick="myFunction()">Click</button>
+
+    <script>
+        const myInput = document.querySelector("input");
+
+        console.log(myInput.value);
+        myInput.value = "novo exemplo";
+        console.log(myInput.value);
+
+        console.log(myInput.disabled);
+        myInput.disabled = false;
+        console.log(myInput.disabled);
+
+        function myFunction() {
+            myInput.focus();
+        }
+    </script>
+</body>
