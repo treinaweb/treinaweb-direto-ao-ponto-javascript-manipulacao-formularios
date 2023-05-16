@@ -1,23 +1,31 @@
 <body>
-    <form>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" required><br>
+    <form name="myForm">
+        <label>
+            Nome:
+            <br>
+            <input type="text" name="name">
+        </label>
 
-        <label for="password">Senha:</label><br>
-        <input type="password" id="password" name="password" required><br>
+        <br>
 
-        <input type="submit" value="Enviar">
+        <label>
+            Idade:
+            <br>
+            <input type="number" name="idade"><br>
+        </label>
+
+        <p>Sexo:</p>
+        <input type="radio" id="masculino" name="genero" value="masculino">
+        <label for="masculino">Masculino</label><br>
+        <input type="radio" id="feminino" name="genero" value="feminino">
+        <label for="feminino">Feminino</label><br>
+        <br />
+        <input type="submit" value="Submit">
     </form>
 
     <script>
-        const myForm = documector("form");
-        console.log(myForm);
-
-        myForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const email = document.querySelector("#email");
-            console.log(event);
-            console.log(email.value);
-        });
+        const myForm = document.forms.myForm;
+        const myInputName = myForm.name;
+        console.log(myForm.idade);
     </script>
 </body>
