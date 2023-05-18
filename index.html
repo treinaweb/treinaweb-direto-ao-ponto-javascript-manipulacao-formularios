@@ -1,44 +1,34 @@
 <body>
-    <form name="myForm">
-        <label for="email">
-            Email:
-            <br>
-            <input type="email" name="email">
-        </label>
-
-        <br>
-        <label for="password">
-            Senha:
-            <br>
-            <input type="password" name="password"><br>
-        </label>
-        <br>
-        <input type="submit" value="Entrar">
-    </form>
+    <input type="file" accept=".txt" multiple onchange="handleFileSelect(this)">
+    <br /><br />
+    <textarea cols="30" rows="10"></textarea>
+    <br /><br />
+    <button onclick="saveFile()">save</button>
 
     <script>
-        const myForm = document.forms.myForm
-        const email = myForm.email;
-        const password = myForm.password;
 
-        myForm.addEventListener("submit", function (event) {
+        function handleFileSelect(input) {
+            const file = input.files[0];
+            const reader = new FileReader();
 
-            if (email.value === "") {
-                event.preventDefault();
-                email.setCustomValidity("Email é obrigatório");
-            } else if (!email.value.match(/^[^ ]+@[^ ]+\.[a-z]{2,3}$/)) {
-                event.preventDefault();
-                email.setCustomValidity(`O email ${email.value} não é válido`)
+            reader.onload = () => {
+                const content = reader.result;
+                document.querySelector("textarea").value = content;
             }
+            reader.readAsText(file);
+        }
 
 
-            if (password.value === "") {
-                event.preventDefault();
-                password.setCustomValidity("A senha é obrigatória");
-            } else if (password.value.length < 3) {
-                event.preventDefault();
-                password.setCustomValidity("A senha é menor do que três caracteres");
-            }
-        });
+        function saveFile() {
+            const textAreaContent = document.querySelector("textarea").value
+            const blob = new Blob([textAreaContent], {
+                type: "text/plain;charset=utf-8"
+            });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", 'edited-file.txt');
+            link.click();
+        }
     </script>
 </body>
